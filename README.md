@@ -78,8 +78,13 @@ CMD ["ng", "serve", "--host", "0.0.0.0"]
 
 Para criar a imagem com o arquivo Dockerfile temos que rodar os seguinte comando:
 
+Build da imagem
 ```console
-docker run -p 4200:4200 <nome-imagem>
+sudo docker build -t <nome-imagem> .
+```
+Rodar a imagem
+```console
+sudo docker run -p 4200:4200 <nome-imagem>
 ```
 
 ### Configurando **Dockerfile** para um site estático (build gerada pelo Angular)
@@ -113,6 +118,9 @@ COPY --from=builder /app/dist/<nome-aplicao>/browser usr/share/nginx/html
 
 # Copiar as configurações do nginx
 COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copiar o arquivo mime.types para que o site consiga carregar arquivos JS
+COPY mime.types /etc/nginx/mime.types
 
 # Expor a porta em que a aplicação irá rodar
 EXPOSE 80
@@ -148,9 +156,31 @@ http {
   }
 }
 ```
+### Criando o arquivo mime.types
+
+Oesta cofiguração é necessario para que a aplicação consiga 
+
+```types
+types {
+  text/html  html htm shtml;
+  text/css  css;
+  application/javascript  js;
+  application/json  json;
+  image/gif  gif;
+  image/jpeg  jpeg jpg;
+  application/xml  xml;
+  text/xml  xml;
+  image/png  png;
+}
+```
 
 Para criar a imagem com o arquivo Dockerfile usando o nginx.conf devemos rodar o comando:
 
+Build da imagem
 ```console
-docker run -p 80:80 <nome-imagem>
+sudo docker build -t <nome-imagem> .
+```
+Rodar a imagem
+```console
+sudo docker run -p 80:80 <nome-imagem>
 ```
