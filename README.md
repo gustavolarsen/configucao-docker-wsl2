@@ -14,7 +14,7 @@ Mais informações de configurações podem ser consultados no link oficial: htt
 
 ## Instalando Docker (sem Docker Desktop)
 
-Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, você precisa configurar o repositório Docker. Depois, você pode instalar e atualizar o Docker a partir do repositório.
+Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, você precisa configurar o repositório Docker. Depois, você pode instalar e atualizar o Docker a partir do repositório. Para isso rode os camondos abaixo **no terminal WSL Linux**:
 
 ```console
 sudo apt-get update
