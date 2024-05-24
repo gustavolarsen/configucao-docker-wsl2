@@ -114,7 +114,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copiar o que está no builder pra dentro da pasta que o servidor nginx vai buscar os arquivos estáticos 
-COPY --from=builder /app/dist/<nome-aplicao>/browser usr/share/nginx/html
+COPY --from=builder /app/dist/<nome-aplicacao>/browser usr/share/nginx/html
 
 # Copiar as configurações do nginx
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -158,7 +158,7 @@ http {
 ```
 ### Criando o arquivo mime.types
 
-Oesta cofiguração é necessario para que a aplicação consiga 
+Esta cofiguração é necessario para que a aplicação consiga carregar arquivos JS da aplicação, caso contrálrio ele entenderá que qualquer arquivso seja uma PLAIN TEXT
 
 ```types
 types {
